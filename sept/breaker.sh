@@ -14,11 +14,11 @@ if [ "$#" -ne 6 ]; then
 fi
 
 in_file="brawker.awk"
-out_dir="/home/upendra/DataGlen/sept/out/"
+out_dir="/home/bangalore/git/mqt/sept/out/"
 out_size= "100"
 prefix="chunk"
 suffix="txt"
-log_dir="/var/tmp/bulky/logs"
+log_dir="/home/bangalore/log"
 
 while getopts ":i:s:d:" opt; do
     case $opt in
@@ -56,7 +56,7 @@ echo "running the gawk script"
 # cleans up the output directory before creating new files
 rm -f $out_dir/$prefix"-*."$suffix
 # use the awk script to create output chunks
-gawk -f /home/upendra/DataGlen/sept/brawker.awk -v directory=$out_dir -v chunk_size=$out_size -v prefix=$prefix -v suffix=$suffix $in_file
+gawk -f /home/bangalore/git/mqt/sept/brawker.awk -v directory=$out_dir -v chunk_size=$out_size -v prefix=$prefix -v suffix=$suffix $in_file
 # choose one of the following lines and comment out the other :
 # call the python script to upload each of the chunks in sequence.
 #find $out_dir -maxdepth 1 -type f  -iname "$prefix-*.$suffix" -print | xargs --verbose -n 1 python3 upload-data.py -o $log_dir -s 0 -i

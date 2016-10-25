@@ -206,7 +206,7 @@ def process_records(in_file_name, skip,no_of_rows):
         mqttc.publish("topic2", "{},{},{},{},{},{},{}".format('up',q, st, upload_time,RECORD_COUNTER,slice,'upendra'), q)
 
 
-        # mqttc.loop_forever()
+        mqttc.loop_forever()
 
 def usage():
     print('Usage: ' + sys.argv[0] + '-i <inputfile> ' + \

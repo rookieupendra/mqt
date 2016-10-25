@@ -5,7 +5,7 @@ from datetime import *
 import os
 import csv
 from csv import Dialect
-import pytz
+#import pytz
 import time
 import json
 import paho.mqtt.client as mqtt
@@ -164,9 +164,9 @@ def process_records(in_file_name, skip=0):
 
 
         mqttc = mqtt.Client()
-        mqttc.tls_set("/etc/mosquitto/certs/ca.crt")
+        mqttc.tls_set("/home/bangalore/git/mqt/ca.crt")
         # mqttc.loop_start()
-        mqttc.connect("localhost", 8883)
+        mqttc.connect("10.0.0.140", 8883)
 
 
         for row in data_file_reader:
